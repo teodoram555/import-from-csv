@@ -1,10 +1,14 @@
-from importFromCsv import import_transactions
-
+from revolut_handler import RevolutHandler
 
 def main():
-    file="revolut.csv"
-    all_transactions=import_transactions(file)
-    print("The first transaction is ")
-    print(all_transactions[0])
-if __name__=="__main__":
+
+    handler = RevolutHandler("finante.db")
+
+    handler.salveaza_csv_in_db("revolut.csv")
+
+    tranzactii = handler.citeste_toate_tranzactiile()
+    print(f"There are a total of {len(transactions)} transactions")
+    print("Prima tranzacție stocată este:", transactions[0])
+
+if __name__ == "__main__":
     main()
